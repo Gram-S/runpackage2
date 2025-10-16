@@ -23,10 +23,20 @@
   ex_ptm_cccn_edges  <- OutputMCN[[3]]
   ex_gene_cccn_edges <- OutputMCN[[4]]
   #save
+
+  
+  #TO DO import bioplanet file
+  OutputPCN <- PathwayCrosstalkNetwork(ex_common_clusters, bioplanet.file = "pathway.csv", createfile = FALSE)
+  ex_pathway_crosstalk_network <- PCN.data[[1]]
+  ex_PCNedgelist <- PCN.data[[2]]
+  ex_pathways_list <- PCN.data[[3]]
+  #save
   
   
-  
+  stringdb.edges <- GetSTRINGdb(ex_gene_cccn_edges)
   MakeDBInput(ex_gene_cccn_edges, file.path.name = "db_nodes.txt")
+  kinsub.edges <- format.kinsub.table(kinasesubstrate.filename = "Kinase_Substrate_Dataset.txt")
+  
   
   
   
