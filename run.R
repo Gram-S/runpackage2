@@ -1,11 +1,17 @@
-  #CHANGE ME IF NEEDED
-  ptmtable <- ex_tiny_ptm_table 
+# How to run
+# htmlwidgets::saveWidget(profvis::profvis({copy and paste the entire file here}), file="profile") # DO NOT APPEND .html TO FILENAME 
+# ---
+
+
+
+#CHANGE ME IF NEEDED
+  ptmtable <- ex_small_ptm_table 
 
   set.seed(1)
   
   #MakeClusterList
   OutputMCL <- MakeClusterList(ptmtable)
-  ex_common_clusters         <- OutputMCL[[1]]
+  ex_common_clusters        <- OutputMCL[[1]]
   ex_adj_consensus          <- OutputMCL[[2]]
   ex_ptm_correlation_matrix <- OutputMCL[[3]]
 
@@ -41,12 +47,7 @@
   ex_pathway_crosstalk_network <- OutputPCN[[1]]
   ex_PCNedgelist <- OutputPCN[[2]]
   ex_pathways_list <- OutputPCN[[3]]
-  
-  
-  
-  
-  #MakeDBInput(ex_gene_cccn_edges, file.path.name = "db_nodes.txt")
-  #kinsub.edges <- format.kinsub.table(kinasesubstrate.filename = "Kinase_Substrate_Dataset.txt")
+
   
   
   
