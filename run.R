@@ -1,5 +1,5 @@
 # How to run
-# htmlwidgets::saveWidget(profvis::profvis({copy and paste the entire file here}), file="profile") # DO NOT APPEND .html TO FILENAME 
+# htmlwidgets::saveWidget(profvis::profvis({codehere}), file="Profiling/name") # DO NOT APPEND .html TO FILENAME 
 # ---
 
 
