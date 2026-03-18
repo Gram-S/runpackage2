@@ -5,9 +5,9 @@
 
 
 #CHANGE ME IF NEEDED
-  ptmtable <- ex_small_ptm_table 
+  ptmtable <- ex_tiny_ptm_table 
 
-  set.seed(1)
+  set.seed(88)
   
   #MakeClusterList
   OutputMCL <- MakeClusterList(ptmtable)
