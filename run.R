@@ -26,7 +26,7 @@
   
   
   #Get stringdb edges
-  ex_stringdb_edges <- GetSTRINGdb(ex_gene_cccn_edgelist, ex_genelist)
+  ex_stringdb_edges <- GetSTRINGdb.edges(ex_gene_cccn_edgelist, ex_genelist)
   
   #Make Genemania Input 
   ex_genemania_edges <- MakeDBInput(ex_gene_cccn_edgelist, file.path.name = "db_nodes.txt")
