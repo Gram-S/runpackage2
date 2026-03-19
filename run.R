@@ -5,12 +5,13 @@
 
 
 #CHANGE ME IF NEEDED
-  ptmtable <- ex_tiny_ptm_table 
+  ex_ptmtable <- ex_tiny_ptm_table 
+  ex_bioplanet <- ex.bioplanet
 
   set.seed(88)
   
   #MakeClusterList
-  OutputMCL <- MakeClusterList(ptmtable)
+  OutputMCL <- MakeClusterList(ex_ptmtable)
   ex_common_clusters        <- OutputMCL[[1]]
   ex_adj_consensus          <- OutputMCL[[2]]
   ex_ptm_correlation_matrix <- OutputMCL[[3]]
@@ -42,14 +43,17 @@
   ex_cfn          <- OutputBCFN[[2]]
 
 
-  #PathwayCrosstalkNetwork
-  OutputPCN <- PathwayCrosstalkNetwork(ex_common_clusters, bioplanet.file = "pathway.csv", createfile = FALSE)
-  ex_pathway_crosstalk_network <- OutputPCN[[1]]
-  ex_PCNedgelist <- OutputPCN[[2]]
-  ex_pathways_list <- OutputPCN[[3]]
+  #BuildPathwayCrosstalkNetwork
+  OutputBPCN <- BuildPathwayCrosstalkNetwork(ex_common_clusters, ex_bioplanet, createfile = FALSE)
+  ex_pathway_crosstalk_network <- OutputBPCN[[1]]
+  ex_PCNedgelist <- OutputBPCN[[2]]
+  ex_pathways_list <- OutputBPCN[[3]]
 
   
-  
+  # Save all the example data
+   # for(name in ls(.GlobalEnv)){
+   #  save(name, file=paste(name, '.rda', sep=''))
+   # }
   
   
   
