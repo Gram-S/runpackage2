@@ -2,11 +2,14 @@
 # htmlwidgets::saveWidget(profvis::profvis({codehere}), file="Profiling/name") # DO NOT APPEND .html TO FILENAME 
 # ---
 
+  # Relies on example data, so check if packaged is installed then load
+  if(!require('PTMsToPathways')){
+    stop('PTMsToPathways not found, please use devtools::document before running this')
+  }
 
 
 #CHANGE ME IF NEEDED
   ex_ptmtable <- ex_tiny_ptm_table 
-  ex_bioplanet <- ex.bioplanet
 
   set.seed(88)
   
