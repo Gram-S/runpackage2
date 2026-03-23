@@ -23,25 +23,26 @@
   
   #MakeCorrelationNetwork
   OutputMCN <- MakeCorrelationNetwork(ex_adj_consensus, ex_ptm_correlation_matrix)
-  ex_ptm_cccn_edgelist  <- OutputMCN[[1]]
-  ex_gene_cccn_edgelist <- OutputMCN[[2]]
-  ex_genelist           <- OutputMCN[[3]]
+  ex_ptm_cccn_edges  <- OutputMCN[[1]]
+  ex_gene_cccn_edges <- OutputMCN[[2]]
+  ex_gene_cccn_nodes <- OutputMCN[[3]]
   
   
   
   #Get stringdb edges
-  ex_stringdb_edges <- GetSTRINGdb.edges(ex_gene_cccn_edgelist, ex_genelist)
+  ex_stringdb_edges <- GetSTRINGdb.edges(ex_gene_cccn_edges, ex_gene_cccn_nodes)
   
   #Make Genemania Input 
-  ex_genemania_edges <- MakeDBInput(ex_gene_cccn_edgelist, file.path.name = "db_nodes.txt")
+  # MakeDBInput(ex_gene_cccn_nodes, file.path.name = "ex_db_nodes.txt")
+  ex_genemania_edges <- GetGeneMANIA.edges('ex_genemania_interactions.txt', ex_gene_cccn_nodes)
   
   #Get Kinsub edges - TO DO 
   #ex_kinsub_edges <- formatKinsubTable(kinasesubstrate.filename = "phospho_cleaned_mapped.txt", ex_gene_cccn_edgelist) #WHY ARE THE PARAMETERS LIKE THIS WHYYYYYY
-  
+
   
   
   #BuildClusterFilteredNetwork
-  OutputBCFN <- BuildClusterFilteredNetwork(ex_gene_cccn_edgelist, ex_stringdb_edges, ex_genemania_edges, NULL)
+  OutputBCFN <- BuildClusterFilteredNetwork(ex_gene_cccn_edges, ex_stringdb_edges, ex_genemania_edges, NULL)
   ex_combined_ppi <- OutputBCFN[[1]]
   ex_cfn          <- OutputBCFN[[2]]
 
@@ -52,11 +53,11 @@
   ex_PCNedgelist <- OutputBPCN[[2]]
   ex_pathways_list <- OutputBPCN[[3]]
 
-  
+  rm('OutputMCL', 'OutputMCN', 'OutputBCFN', 'OutputBPCN')
   # Save all the example data
-   # for(name in ls(.GlobalEnv)){
-   #  save(name, file=paste(name, '.rda', sep=''))
-   # }
+  for(name in ls(.GlobalEnv)){
+    save(name, file=paste(name, '.rda', sep=''))
+  }
   
   
   
