@@ -9,7 +9,7 @@
 
 
 #CHANGE ME IF NEEDED
-  ex_ptmtable <- ex_tiny_ptm_table 
+  ex_ptmtable <- ex_small_ptm_table 
 
   set.seed(88)
   
@@ -54,10 +54,24 @@
   ex_pathways_list <- OutputBPCN[[3]]
 
   rm('OutputMCL', 'OutputMCN', 'OutputBCFN', 'OutputBPCN')
-  # Save all the example data
-  for(name in ls(.GlobalEnv)){
-    save(name, file=paste(name, '.rda', sep=''))
-  }
+  
+  save(ex_common_clusters, file='ex_common_clusters.rda')
+  save(ex_adj_consensus, file='ex_adj_consensus.rda')
+  save(ex_ptm_correlation_matrix, file='ex_ptm_correlation_matrix.rda')
+
+  save(ex_ptm_cccn_edges, file='ex_ptm_cccn_edges.rda')
+  save(ex_gene_cccn_edges, file='ex_gene_cccn_edges.rda')
+  save(ex_gene_cccn_nodes, file='ex_gene_cccn_nodes.rda')
+
+  save(ex_stringdb_edges, file='ex_stringdb_edges.rda')
+  save(ex_genemania_edges, file='ex_genemania_edges.rda')
+
+  save(ex_combined_ppi, file='ex_combined_ppi.rda')
+  save(ex_cfn, file='ex_cfn.rda')
+
+  save(ex_pathway_crosstalk_network, file='ex_pathway_crosstalk_network.rda')
+  save(ex_PCNedgelist, file='ex_PCNedgelist.rda')
+  save(ex_pathways_list, file='ex_pathways_list.rda')
   
   
   
