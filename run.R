@@ -6,13 +6,15 @@
   if(!require('PTMsToPathways')){
     stop('PTMsToPathways not found, please use devtools::document before running this')
   }
-
-
-#CHANGE ME IF NEEDED
-  ex_ptmtable <- ex_small_ptm_table 
-
-  set.seed(88)
   
+  # Load data from package
+  data( 'ex_small_ptm_table', 'ex_bioplanet', package='PTMsToPathways' )
+
+  #CHANGE ME IF NEEDED
+  save_to_file <- FALSE # IF True then we write everything to the working directory
+  ex_ptmtable <- ex_small_ptm_table 	
+  set.seed(88)
+
   #MakeClusterList
   OutputMCL <- MakeClusterList(ex_ptmtable)
   ex_common_clusters        <- OutputMCL[[1]]
@@ -54,6 +56,8 @@
   ex_pathways_list <- OutputBPCN[[3]]
 
   rm('OutputMCL', 'OutputMCN', 'OutputBCFN', 'OutputBPCN')
+
+  if(save_to_file){
   
   save(ex_common_clusters, file='ex_common_clusters.rda')
   save(ex_adj_consensus, file='ex_adj_consensus.rda')
@@ -72,6 +76,8 @@
   save(ex_pathway_crosstalk_network, file='ex_pathway_crosstalk_network.rda')
   save(ex_PCNedgelist, file='ex_PCNedgelist.rda')
   save(ex_pathways_list, file='ex_pathways_list.rda')
+
+  }
   
   
   
